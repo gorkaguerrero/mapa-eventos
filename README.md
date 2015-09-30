@@ -2,7 +2,7 @@
 Página web que muestra una lista de eventos y la localización de los mismos sobre un mapa a partir de un conjunto de datos abiertos ofrecidos por el Ayuntamiento de Zaragoza a través de su [API](http://www.zaragoza.es/ciudad/risp/detalle_Risp?id=282).
 
 
-DEmostración disponible en el sitio web http://pilares15.es
+Demostración disponible en el sitio web http://pilares15.es
 
 Para usar los ficheros, se puede usar el siguiente código de ejemplo:
 
