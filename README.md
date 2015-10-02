@@ -12,8 +12,9 @@ Para usar los ficheros, se puede usar el siguiente código de ejemplo:
 <script src="path-to-js/map_pilares.js"></script>
 
 ```
+Para el panel, se ha usado la librería [sidebar-v2](https://github.com/Turbo87/sidebar-v2) a la que se ha añadido una nueva función para saber si se encuentra abierta o cerrada.
 
-Se necesitan también las librerías [sidebar-v2](https://github.com/Turbo87/sidebar-v2) y [scrollTo](https://github.com/flesler/jquery.scrollTo), además de jQuery y jQuery UI y sus respectivos ficheros CSS, junto con la API de Google Maps para el mapa y los marcadores.
+Se necesita también la librería [scrollTo](https://github.com/flesler/jquery.scrollTo), además de jQuery y jQuery UI y sus respectivos ficheros CSS, junto con la API de Google Maps para el mapa y los marcadores.
 Para mostrar los botones de Facebook y Twitter, se ha de incluir sus respectivos SDK/API al código HTML de la web.
 
 En la web de ejemplo se pueden apreciar la llamada a las diversas librerías y el código usado para el HTML.

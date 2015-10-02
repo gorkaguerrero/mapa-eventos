@@ -81,10 +81,8 @@ function initialize() {
     
     //Top scroll arrow
     $('a[href*=#]').bind("click", function(e){
-		var anchor = $(this);
-		$('html, body, #sidebar, .sidebar-content, #home').stop().animate({
-			scrollTop: $(anchor.attr('href')).offset().top
-		}, 1000);
+		//var anchor = $(this);
+		$('html, body, #sidebar, .sidebar-content, #home').scrollTo(0,800);
 		e.preventDefault();
 	});
     
@@ -473,8 +471,8 @@ function initialize() {
         //Add a listener to this marker
         google.maps.event.addListener(marker, 'click', function(salto) {
             //we want to now if we will do auto scroll inside the sidebar panel
-            salto = (typeof salto !== 'undefined' ? salto : true);
-            
+            salto = (typeof salto[0] !== 'undefined' ? salto[0] : !sidebar.isOpen());
+                        
             //Set the content and move the map to avoid the sidebar collapse
             infoWindow.setContent(content);
             infoWindow.open(map, marker);
@@ -487,7 +485,7 @@ function initialize() {
             }
             //Scroll to the event position in the sidebar           
             if (salto) {
-                $('html, body, #sidebar, .sidebar-content, #home').scrollTo($('#event_'+marker.iev),800).scrollTo('-=10px');
+                $('html, body, #sidebar, .sidebar-content, #home').scrollTo($('#event_'+marker.iev),800, {offset: -10});
             }
             //Get the new highlighted event (infowindow open) and highlight it in the sidebar
             active = marker.iev;
@@ -542,7 +540,7 @@ function hideFilter(tema){
 //Function that opens the infowindow of a marker that we have chosen from the sidebar
 function myclick(i) {
     //Trigger action, we imitate a click over the marker
-    google.maps.event.trigger(markers[i], "click", false);
+    google.maps.event.trigger(markers[i], "click", [false]);
     var isMob = false;
     //Ckec if the screen resolution shows sidebar and map at the same time or not
     if(window.innerWidth <= 800 && window.innerHeight <= 600) {
