@@ -280,7 +280,7 @@ function initialize() {
                 fecha = getDateString(ini, fin, hi, hf);
                 hora = getTimeString(hi, hf);
                 //Add the event tag to the filter array (filtered)
-                addFilter(temas.replace(/[, ]+/g, ""));
+                addFilter(temas.replace(/[, \/]+/g, ""));
                 
                 //If we have coordinates, add also the marker to the map
                 if (lat != '-'){                    
@@ -291,7 +291,7 @@ function initialize() {
                 var facebook = '<div class="fb-share-button" data-href="http://www.zaragoza.es/ciudad/cultura/agenda/fichacultura_Agenda?id='+id+'" data-send="true" data-layout="button" data-width="66" data-show-faces="false">Facebook</div>';
                 
                 //HTML for the sidebar
-                var text = '<div class="title"><img src="'+getIcon(temas)+'" alt="icono '+temas+'" height="30" width="26" />&nbsp;<h3 class="marker_title">'+t+'</h3></div>'+
+                var text = '<div class="title"><img src="'+getIcon(temas.replace(/[, \/]+/g, ""))+'" alt="icono '+temas+'" height="30" width="26" />&nbsp;<h3 class="marker_title">'+t+'</h3></div>'+
                 '<span class="marker_address"><i class="fa fa-home"></i>&nbsp;'+d+' ('+c+') </span>'+
                 '<span class="marker_date"><span class="marker_day"><i class="fa fa-calendar"></i>&nbsp;'+fecha+'</span><span class="marker_time"><i class="fa fa-clock-o"></i>&nbsp;'+hora+'</span></span>'+
                 '<span class="marker_price"><i class="fa fa-eur"></i>&nbsp;&nbsp;'+p+'</span>'+
@@ -306,9 +306,9 @@ function initialize() {
                 
                 //Add to the html and give some attribures depending if the event has marker or not
                 if (ma != -1){
-                    o = $(document.createElement('div')).attr('id','event_'+ma).addClass('marker_list '+temas.replace(/[, ]+/g, "")).html(text);    
+                    o = $(document.createElement('div')).attr('id','event_'+ma).addClass('marker_list '+temas.replace(/[, \/]+/g, "")).html(text);    
                 } else {
-                    o = $(document.createElement('div')).addClass('marker_list '+temas.replace(/[, ]+/g, "")).html(text);
+                    o = $(document.createElement('div')).addClass('marker_list '+temas.replace(/[, \/]+/g, "")).html(text);
                 }
                 //Append to the panel
                 $('#content-events').append(o); 
@@ -398,8 +398,12 @@ function initialize() {
                 return iconBase + 'chapel.png'
             case 'Gastronomía': 
                 return iconBase + 'restaurant.png'
+            case 'CursosyTalleres': 
+                return iconBase + 'workoffice.png'
+            case 'DanzasBailes': 
+                return iconBase + 'dance_class.png'   
             default:
-                return iconBase + 'festival.png'    
+                return iconBase + 'sight-2.png'    
         }       
     }
     
@@ -433,7 +437,7 @@ function initialize() {
     //Function that adds a marker with an event to the map 
     function addMarker(t, fecha, lat, lon, d, c, fecha, hora, p, autobuses, temas, id){
         //Filtered tag of the event
-        var temasClean = temas.replace(/[, ]+/g, "");
+        var temasClean = temas.replace(/[, \/]+/g, "");
         
         //New marker with some options and viisble by default
         var marker = new google.maps.Marker({
